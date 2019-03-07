@@ -966,6 +966,11 @@ public class RangerHiveAuthorizer extends RangerHiveAuthorizerBase {
 
 		return sb;
 	}
+
+        public boolean needTransform() {
+                return false;
+        }
+
 }
 
 enum HiveObjectType { NONE, DATABASE, TABLE, VIEW, PARTITION, INDEX, COLUMN, FUNCTION, URI };
