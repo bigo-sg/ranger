@@ -123,15 +123,22 @@ public class RangerDefaultPolicyItemEvaluator extends RangerAbstractPolicyItemEv
 				if (request.isAccessTypeDelegatedAdmin()) { // used only in grant/revoke scenario
 					if (policyItem.getDelegateAdmin()) {
 						result.setIsAllowed(true);
+						result.setIsAccessDetermined(true);  // add by jsq
 						result.setPolicyId(policyId);
 					}
 				} else if (CollectionUtils.isNotEmpty(policyItem.getAccesses())) {
 					boolean accessAllowed = false;
+					boolean accessRefused = false;
 
 					if (request.isAccessTypeAny()) {
 						for (RangerPolicy.RangerPolicyItemAccess access : policyItem.getAccesses()) {
 							if (access.getIsAllowed()) {
 								accessAllowed = true;
+//								break; // comment by jsq
+							}
+							// add by jsq
+							if (access.getIsRefused()){
+								accessRefused = true;
 								break;
 							}
 						}
@@ -139,16 +146,24 @@ public class RangerDefaultPolicyItemEvaluator extends RangerAbstractPolicyItemEv
 						for (RangerPolicy.RangerPolicyItemAccess access : policyItem.getAccesses()) {
 							if (access.getIsAllowed() && StringUtils.equalsIgnoreCase(access.getType(), request.getAccessType())) {
 								accessAllowed = true;
+//								break;   // comment by jsq
+							}
+							if (access.getIsRefused() && StringUtils.equalsIgnoreCase(access.getType(), request.getAccessType())){
+								accessRefused = true;
 								break;
 							}
 						}
 					}
 
-					if(accessAllowed) {
+					if(accessAllowed && !accessRefused) {  // change by jsq
 						if(matchCustomConditions(request)) {
 							result.setIsAllowed(true);
 							result.setPolicyId(policyId);
 						}
+					}
+					// add by jsq
+					else{
+						result.setIsRefused(true);
 					}
 				}
 			}

@@ -29,6 +29,7 @@ public class RangerAccessResult {
 
 	private boolean isAccessDetermined = false;
 	private boolean  isAllowed = false;
+	private boolean  isRefused = false;    //add by jsq
 	private boolean isAuditedDetermined = false;
 	private boolean  isAudited = false;
 	private long     policyId  = -1;
@@ -40,6 +41,7 @@ public class RangerAccessResult {
 		this.request     = request;
 		this.isAccessDetermined = false;
 		this.isAllowed   = false;
+		this.isRefused   = false; //add by jsq
 		this.isAuditedDetermined = false;
 		this.isAudited   = false;
 		this.policyId    = -1;
@@ -69,7 +71,7 @@ public class RangerAccessResult {
 
 	public boolean getIsAccessDetermined() { return isAccessDetermined; }
 
-	private void setIsAccessDetermined(boolean value) { isAccessDetermined = value; }
+	public void setIsAccessDetermined(boolean value) { isAccessDetermined = value; }  //change by jsq
 
 	/**
 	 * @return the isAllowed
@@ -78,13 +80,29 @@ public class RangerAccessResult {
 		return isAllowed;
 	}
 
-	/**
+	/** add by jsq
+	 * @return the isRefused
+	 */
+	public boolean getIsRefused() {
+		return isRefused;
+	}
+
+	/** change by jsq
 	 * @param isAllowed the isAllowed to set
 	 */
 	public void setIsAllowed(boolean isAllowed) {
-		setIsAccessDetermined(true);
+		setIsAccessDetermined(false);
 		this.isAllowed = isAllowed;
 	}
+
+	/**
+	 * @param isRefused the isRefused to set
+	 */
+	public void setIsRefused(boolean isRefused) {
+		setIsAccessDetermined(true);
+		this.isRefused = isRefused;
+	}
+
 
 	/**
 	 * @param reason the reason to set

@@ -926,7 +926,7 @@ public class ServiceREST {
 			
 						policyItem.getUsers().add(user);
 						for(String accessType : grantRequest.getAccessTypes()) {
-							policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE));
+							policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE, Boolean.FALSE));  // change ny jsq
 						}
 						policyItem.setDelegateAdmin(grantRequest.getDelegateAdmin());
 						policy.getPolicyItems().add(policyItem);
@@ -937,7 +937,7 @@ public class ServiceREST {
 			
 						policyItem.getGroups().add(group);
 						for(String accessType : grantRequest.getAccessTypes()) {
-							policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE));
+							policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE, Boolean.FALSE));  // change ny jsq
 						}
 						policyItem.setDelegateAdmin(grantRequest.getDelegateAdmin());
 						policy.getPolicyItems().add(policyItem);
@@ -1672,7 +1672,7 @@ public class ServiceREST {
 					ret = true;
 				}
 			} else {
-				policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE));
+				policyItem.getAccesses().add(new RangerPolicyItemAccess(accessType, Boolean.TRUE, Boolean.FALSE)); // change by jsq
 				ret = true;
 			}
 		}

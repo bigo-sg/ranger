@@ -77,6 +77,10 @@ public class XXPolicyItemAccess extends XXDBBase implements
 	@Column(name = "is_allowed")
 	protected Boolean isAllowed;
 
+	// add by jsq，明天要看看这里
+	@Column(name = "is_refused")
+	protected Boolean isRefused;
+
 	/**
 	 * order of the XXPolicyItemAccess
 	 * <ul>
@@ -172,6 +176,11 @@ public class XXPolicyItemAccess extends XXDBBase implements
 		this.isAllowed = isAllowed;
 	}
 
+	//add by jsq
+	public void setIsRefused(Boolean isRefused) {
+		this.isRefused = isRefused;
+	}
+
 	/**
 	 * Returns the value for the member attribute <b>isAllowed</b>
 	 * 
@@ -179,6 +188,11 @@ public class XXPolicyItemAccess extends XXDBBase implements
 	 */
 	public Boolean getIsallowed() {
 		return this.isAllowed;
+	}
+
+	// add by jsq
+	public Boolean getIsRefused() {
+		return this.isRefused;
 	}
 
 	/**

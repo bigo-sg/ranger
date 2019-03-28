@@ -349,7 +349,7 @@ public class RangerHiveAuthorizer extends RangerHiveAuthorizerBase {
 					result = hivePlugin.isAccessAllowed(request, auditHandler);
 				}
 
-				if(result != null && !result.getIsAllowed()) {
+				if(result != null && !result.getIsAllowed() || result != null && result.getIsRefused()) { // change by jsq
 					String path = resource.getAsString();
 
 					throw new HiveAccessControlException(String.format("Permission denied: user [%s] does not have [%s] privilege on [%s]",

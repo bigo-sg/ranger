@@ -701,18 +701,20 @@ public class RangerPolicy extends RangerBaseModelObject implements java.io.Seria
 
 		private String  type      = null;
 		private Boolean isAllowed = null;
+		private Boolean isRefused = null;
 
 		public RangerPolicyItemAccess() {
-			this(null, null);
+			this(null, null, null); // change by jsq
 		}
 
 		public RangerPolicyItemAccess(String type) {
-			this(type, null);
+			this(type, null, null); // change by jsq
 		}
 
-		public RangerPolicyItemAccess(String type, Boolean isAllowed) {
+		public RangerPolicyItemAccess(String type, Boolean isAllowed, Boolean isRefused) {
 			setType(type);
 			setIsAllowed(isAllowed);
+			setIsRefused(isRefused);  // add by jsq
 		}
 
 		/**
@@ -736,11 +738,25 @@ public class RangerPolicy extends RangerBaseModelObject implements java.io.Seria
 			return isAllowed;
 		}
 
+		/** add by jsq
+		 * @return the isAllowed
+		 */
+		public Boolean getIsRefused() {
+			return isRefused;
+		}
+
 		/**
 		 * @param isAllowed the isAllowed to set
 		 */
 		public void setIsAllowed(Boolean isAllowed) {
 			this.isAllowed = isAllowed == null ? Boolean.TRUE : isAllowed;
+		}
+
+		/** add by jsq
+		 * @param isRefused the isAllowed to set
+		 */
+		public void setIsRefused(Boolean isRefused) {
+			this.isRefused = isRefused == null ? Boolean.TRUE : isRefused;
 		}
 
 		@Override

@@ -388,6 +388,7 @@ public class RangerPolicyEngineImpl implements RangerPolicyEngine {
 				for(RangerPolicyEvaluator evaluator : evaluators) {
 					evaluator.evaluate(request, ret);
 
+					// comment by jsq, maybe noNeed to change
 					// stop once allowed==true && auditedDetermined==true
 					if(ret.getIsAccessDetermined() && ret.getIsAuditedDetermined()) {
 						break;

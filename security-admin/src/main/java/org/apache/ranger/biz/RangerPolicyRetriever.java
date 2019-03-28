@@ -611,7 +611,7 @@ public class RangerPolicyRetriever {
 						XXPolicyItemAccess xAccess = iterAccesses.next();
 
 						if(xAccess.getPolicyitemid().equals(xPolicyItem.getId())) {
-							policyItem.getAccesses().add(new RangerPolicyItemAccess(lookupCache.getAccessType(xAccess.getType()), xAccess.getIsallowed()));
+							policyItem.getAccesses().add(new RangerPolicyItemAccess(lookupCache.getAccessType(xAccess.getType()), xAccess.getIsallowed(), xAccess.getIsRefused())); // change by jsq
 						} else {
 							if(iterAccesses.hasPrevious()) {
 								iterAccesses.previous();
