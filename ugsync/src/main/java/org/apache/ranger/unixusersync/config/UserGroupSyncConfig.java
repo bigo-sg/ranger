@@ -81,7 +81,7 @@ public class UserGroupSyncConfig  {
 
 	private static final long UGSYNC_SLEEP_TIME_IN_MILLIS_BETWEEN_CYCLE_UNIX_DEFAULT_VALUE = 60000L;
 	
-	private static final long UGSYNC_SLEEP_TIME_IN_MILLIS_BETWEEN_CYCLE_LDAP_DEFAULT_VALUE = 3600000L;
+	private static final long UGSYNC_SLEEP_TIME_IN_MILLIS_BETWEEN_CYCLE_LDAP_DEFAULT_VALUE = 360000L;
 
 	private static final String UGSYNC_SOURCE_CLASS_PARAM = "ranger.usersync.source.impl.class";
 
